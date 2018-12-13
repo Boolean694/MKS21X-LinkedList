@@ -7,13 +7,21 @@ public class Node {
 		next = n;
 		prev = p;
 	}
-	public int gd() {
-		return data;
+	public Integer getData() {
+	    return data;
 	}
-	public Node gn() {
-		return next;
+	public Integer setData(Integer i) {
+	    Integer wrtn = data;
+	    data = i;
+	    return wrtn;
 	}
-	public Node gp() {
-		return prev;
+	public String toString() {
+	    return "" + data;
+	}
+	public Node next() {
+	    return next;
+	}
+	public Node prev() {
+	    return prev;
 	}
 }
