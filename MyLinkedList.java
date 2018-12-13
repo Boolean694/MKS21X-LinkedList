@@ -21,9 +21,29 @@ public class MyLinkedList {
 		}
 		return g;
 	}
-	public boolean add(int v) {
+	public boolean add(Integer v) {
 		Node nn = new Node(v, null, end);
 		end = nn;
+	}
+	public Integer get(int i) {
+	    if(i < 0 || i >= size) {throw new IndexOutOfBoundsException();}
+	    if(i == 0) {return start.getData();}
+	    Node c = start.next();
+	    int q = 1;
+	    while(q < i) {
+	        c = c.next();
+	        q++;
+	    }
+	    return c.getData();
+	}
+	public Integer set(int i, Integer v) {
+	    if(i < 0 || i >= size) {throw new IndexOutOfBoundsException();}
+	    Node c = start.next();
+	    int q = 1;
+	    while(q < i) {
+	        c = c.next();
+	        q++;
+	    }
 	}
 	public String toString() {
 		String s = "[" + start.getData() + ",";
