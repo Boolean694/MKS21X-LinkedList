@@ -59,4 +59,23 @@ public class MyLinkedList {
 		s += "]"
 		return s;
 	}
+	public boolean contains(Integer v) {
+		boolean b = false;
+		if(start.getData() == v || end.getData() == v) {b = true;}
+		Node c = start.next();
+		for(int q = 1; q < size - 1; q++) {
+			if(c.getData() == v) {b = true;}
+			else {q += 0;}
+		}
+		return b;
+	}
+	public int indexOf(Integer v) {
+		if(start.getData() == v) {return 0;}
+		if(end.getData() == v) {return size - 1;}
+		Node c = start.next();
+		for(int q = 1; q < size - 1; q++) {
+			if(c.getData() == v) {return q;}
+		}
+		return -1;
+	}
 }
