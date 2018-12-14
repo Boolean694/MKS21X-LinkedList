@@ -100,4 +100,27 @@ public class MyLinkedList {
 			c.setPrev(nn);
 		}
 	}
+	public Integer remove(int i) {
+		if(i < 0 || i >= size) {throw new IndexOutOfBoundsException();}
+		if(i == 0) {
+			Integer te = start.getData();
+			start = start.next();
+			start.setPrev(null);
+			return te;
+		}
+		if(i == size - 1) {
+			Integer yw = end.getData();
+			end = end.prev();
+			end.setNext(null);
+			return yw;
+		}
+		Node c = start.next();
+		for(int q = 1; q < i; q++) {
+			c = c.next();
+		}
+		Integer tr = c.getData();
+		c.next().setPrev(c.prev());
+		c.prev().setNext(c.next());
+		return tr;
+	}
 }
