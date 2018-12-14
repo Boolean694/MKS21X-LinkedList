@@ -23,7 +23,9 @@ public class MyLinkedList {
 	}
 	public boolean add(Integer v) {
 		Node nn = new Node(v, null, end);
+		end.setNext(nn);
 		end = nn;
+		return true;
 	}
 	public Integer get(int i) {
 	    if(i < 0 || i >= size) {throw new IndexOutOfBoundsException();}
@@ -56,7 +58,7 @@ public class MyLinkedList {
 			s += ",";
 		}
 		s += end.getData();
-		s += "]"
+		s += "]";
 		return s;
 	}
 	public boolean contains(Integer v) {
@@ -77,5 +79,25 @@ public class MyLinkedList {
 			if(c.getData() == v) {return q;}
 		}
 		return -1;
+	}
+	public void add(int i, Integer v) {
+		if(i < 0 || i >= size) {throw new IndexOutOfBoundsException();}
+		else if(i == 0) {
+			Node nn = new Node(v, start, null);
+			start.setPrev(nn);
+			start = nn;
+		}
+		else if(i == size - 1) {
+			add(v);
+		}
+		else {
+			Node c = start.next();
+			for(int q = 1; q < size - 1; q++) {
+				c = c.next();
+			}
+			Node nn = new Node(v, c, c.prev());
+			c.prev().setNext(nn);
+			c.setPrev(nn);
+		}
 	}
 }
