@@ -81,12 +81,13 @@ public class MyLinkedList {
 		return s;
 	}
 	public boolean contains(Integer v) {
+        if(size == 0) {return false;}
+        if(size == 1) {return start.getData() == v;}
 		boolean b = false;
 		if(start.getData() == v || end.getData() == v) {b = true;}
 		Node c = start.next();
 		for(int q = 1; q < size - 1; q++) {
 			if(c.getData() == v) {b = true;}
-			else {q += 0;}
 		}
 		return b;
 	}
