@@ -44,6 +44,9 @@ public class MyLinkedList {
 	        c = c.next();
 	        q++;
 	    }
+		int f = c.getData();
+		c.setData(v);
+		return f;
 	}
 	public String toString() {
 		String s = "[" + start.getData() + ",";
