@@ -2,10 +2,15 @@ public class MyLinkedList {
 	private int size;
 	private Node start;
 	private Node end;
-	public MyLinkedList(int s, Node i, Node e) {
-	    size = s;
-	    start = i;
-	    end = e;
+	public MyLinkedList(int[] a) {
+	    this();
+	    if(a.length == 0) {size = 0; start = null; end = null;}
+	    else {
+	        for(int q = 0; q < a.length; q++) {
+	            this.add(a[q]);
+	            size++;
+	        }
+	    }
 	}
 	public MyLinkedList() {
 	    size = 0;
@@ -13,6 +18,10 @@ public class MyLinkedList {
 	    end = null;
     }
 	public int size() {
+	    if(size == 0) {
+	        return 0;
+	    }
+	    if(start == end) {return 1;}
 		int g = 2;
 		Node c = start.next();
 		while(c.next() != null) {
@@ -22,6 +31,12 @@ public class MyLinkedList {
 		return g;
 	}
 	public boolean add(Integer v) {
+	    if(size == 0) {
+	        Node nn = new Node(v, null, null);
+	        start = nn;
+	        end = nn;
+	        return true;
+	    }
 		Node nn = new Node(v, null, end);
 		end.setNext(nn);
 		end = nn;
@@ -52,11 +67,14 @@ public class MyLinkedList {
 		return f;
 	}
 	public String toString() {
+	    if(size == 0) {return "[]";}
+	    if(size == 1) {return "[" + start.getData() + "]";}
 		String s = "[" + start.getData() + ",";
 		Node c = start.next();
 		while(c.next() != null) {
 			s += c.getData();
 			s += ",";
+			c = c.next();
 		}
 		s += end.getData();
 		s += "]";
