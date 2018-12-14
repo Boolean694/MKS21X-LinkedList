@@ -25,6 +25,7 @@ public class MyLinkedList {
 		Node nn = new Node(v, null, end);
 		end.setNext(nn);
 		end = nn;
+		size++;
 		return true;
 	}
 	public Integer get(int i) {
@@ -86,9 +87,11 @@ public class MyLinkedList {
 			Node nn = new Node(v, start, null);
 			start.setPrev(nn);
 			start = nn;
+			size++;
 		}
 		else if(i == size - 1) {
 			add(v);
+			size++;
 		}
 		else {
 			Node c = start.next();
@@ -98,6 +101,7 @@ public class MyLinkedList {
 			Node nn = new Node(v, c, c.prev());
 			c.prev().setNext(nn);
 			c.setPrev(nn);
+			size++;
 		}
 	}
 	public Integer remove(int i) {
@@ -106,12 +110,14 @@ public class MyLinkedList {
 			Integer te = start.getData();
 			start = start.next();
 			start.setPrev(null);
+			size--;
 			return te;
 		}
 		if(i == size - 1) {
 			Integer yw = end.getData();
 			end = end.prev();
 			end.setNext(null);
+			size--;
 			return yw;
 		}
 		Node c = start.next();
@@ -121,6 +127,14 @@ public class MyLinkedList {
 		Integer tr = c.getData();
 		c.next().setPrev(c.prev());
 		c.prev().setNext(c.next());
+		size--;
 		return tr;
+	}
+	public boolean remove(Integer v) {
+		if(!this.contains(v)) {return false;}
+		int d = indexOf(v);
+		this.remove(d);
+		size--;
+		return true;
 	}
 }
