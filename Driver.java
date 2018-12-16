@@ -11,5 +11,12 @@ public class Driver {
         System.out.println("Element changed, old element: " + bean.set(11, 11));
         System.out.println(bean.toString());
         System.out.println("Contains element 7? " + bean.contains(7));
+        System.out.println(bean.toString());
+		System.out.println("Index of 6: " + bean.indexOf(6));
+		bean.add(2,123);
+		System.out.println("Added 12 to index 2");
+		System.out.println(bean.toString());
+		System.out.println("Element at index 2 removed, old value: " + bean.remove(2));
+		System.out.println(bean.toString());
     }
 }

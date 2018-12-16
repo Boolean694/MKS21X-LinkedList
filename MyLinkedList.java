@@ -100,6 +100,7 @@ public class MyLinkedList {
 		Node c = start.next();
 		for(int q = 1; q < size - 1; q++) {
 			if(c.getData() == v) {return q;}
+			c = c.next();
 		}
 		return -1;
 	}
@@ -117,7 +118,7 @@ public class MyLinkedList {
 		}
 		else {
 			Node c = start.next();
-			for(int q = 1; q < size - 1; q++) {
+			for(int q = 1; q < i; q++) {
 				c = c.next();
 			}
 			Node nn = new Node(v, c, c.prev());
