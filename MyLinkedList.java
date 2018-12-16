@@ -89,8 +89,6 @@ public class MyLinkedList {
 		Node c = start.next();
 		for(int q = 1; q < this.size - 1; q++) {
 			if(b) {return true;}
-			System.out.println(this.toString());
-			System.out.println("" + q + "," + b);
 			if(c.getData() == v) {b = true;}
 			c = c.next();
 		}
