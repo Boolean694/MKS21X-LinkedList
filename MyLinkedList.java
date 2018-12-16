@@ -6,6 +6,7 @@ public class MyLinkedList {
 	    this();
 	    if(a.length == 0) {size = 0; start = null; end = null;}
 	    else {
+			size = 0;
 	        for(int q = 0; q < a.length; q++) {
 	            this.add(a[q]);
 	            size++;
@@ -86,8 +87,12 @@ public class MyLinkedList {
 		boolean b = false;
 		if(start.getData() == v || end.getData() == v) {b = true;}
 		Node c = start.next();
-		for(int q = 1; q < size - 1; q++) {
+		for(int q = 1; q < this.size - 1; q++) {
+			if(b) {return true;}
+			System.out.println(this.toString());
+			System.out.println("" + q + "," + b);
 			if(c.getData() == v) {b = true;}
+			c = c.next();
 		}
 		return b;
 	}
